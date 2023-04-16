@@ -35,7 +35,7 @@ h1 {
   margin: 25px;
 }
 h2 {
-  margin: 40px 0px;
+  margin: 15px 0px;
 }
 h3 {
   font-style: italic;
@@ -46,7 +46,6 @@ h3 {
 }
 fieldset {
   background-color: rgb(17, 17, 17);
-  width: 400px;
 
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -54,7 +53,7 @@ fieldset {
 }
 
 input {
-  width: 400px;
+  width: 250px;
   background-color: transparent;
   border: none;
   color: white;
@@ -63,12 +62,14 @@ input {
 .reordeBtn {
   margin: 10px;
 }
+
 .reordeBtn button {
   height: 50px;
   background-color: rgb(17, 17, 17);
   color: white;
-  border: 1px solid rgb(192, 192, 192);
-  border-radius: 10px;
+  border: 2px solid rgb(192, 192, 192);
+  border-radius: 8px;
+  font-family: "Playfair Display", serif;
 }
 .collectionGallery {
   margin-top: 40px;
@@ -78,7 +79,7 @@ input {
 }
 
 .recordContainer {
-  width: 47%;
+  width: 15%;
   aspect-ratio: 1/1;
   background: #000000;
   display: flex;
@@ -127,17 +128,13 @@ input {
   opacity: 1;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 700px) {
   .collectionGallery .recordContainer {
-    width: 18%;
+    width: 45%;
   }
 }
-@media (min-width: 1820px) {
+@media (min-width: 701px) and (max-width: 1500px) {
   .collectionGallery .recordContainer {
-    width: 16%;
-  }
-
-  form {
-    width: 1vw;
+    width: 20%;
   }
 }

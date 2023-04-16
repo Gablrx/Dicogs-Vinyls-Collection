@@ -93,7 +93,7 @@ function App() {
                   console.log(filteredData);
                 }}
               >
-                Change order
+                Sort
               </button>
             </div>
 
@@ -108,7 +108,7 @@ function App() {
           {
             filteredData.map((value, index) => {
               return (
-                <Gallery value={value} />
+                <Gallery value={value} key={index} />
               )
             })
           }
