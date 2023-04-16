@@ -79,7 +79,7 @@ input {
 }
 
 .recordContainer {
-  width: 15%;
+  width: 18%;
   aspect-ratio: 1/1;
   background: #000000;
   display: flex;
@@ -132,9 +132,18 @@ input {
   .collectionGallery .recordContainer {
     width: 45%;
   }
+
+  h2 {
+    margin: 5px 0px;
+    font-size: 18px;
+  }
+  h3 {
+    font-style: italic;
+    font-size: 14px;
+  }
 }
-@media (min-width: 701px) and (max-width: 1500px) {
+@media (min-width: 701px) and (max-width: 1300px) {
   .collectionGallery .recordContainer {
-    width: 20%;
+    width: 28%;
   }
 }
