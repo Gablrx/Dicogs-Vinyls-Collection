@@ -136,4 +136,8 @@ input {
   .collectionGallery .recordContainer {
     width: 16%;
   }
+
+  form {
+    width: 99%;
+  }
 }
