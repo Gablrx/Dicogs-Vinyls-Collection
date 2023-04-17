@@ -6,7 +6,6 @@ const Gallery = ({ value }) => {
       <div
         className="record"
         style={{
-          backgroundColor: `black`,
           backgroundImage: `url(${value.basic_information.cover_image})`,
         }}
       ></div>
