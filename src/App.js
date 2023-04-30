@@ -42,7 +42,8 @@ function App() {
     let result = [];
 
     result = allData.filter((data) => {
-      return data.basic_information.artists[0].name.toLowerCase().search(value.toLowerCase()) !== -1;
+      return data.basic_information.artists[0].name.toLowerCase().search(value.toLowerCase()) !== -1 ||
+        data.basic_information.title.toLowerCase().search(value.toLowerCase()) !== -1;
     });
     setFilteredData(result);
   }

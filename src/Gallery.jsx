@@ -2,7 +2,7 @@ import React from "react";
 
 const Gallery = ({ value }) => {
   return (
-    <a key={value.id} className="recordContainer" href="#">
+    <div className="recordContainer">
       <div
         className="record"
         style={{
@@ -14,7 +14,7 @@ const Gallery = ({ value }) => {
         <h2>{value.basic_information.title}</h2>
         <h5>{value.basic_information.year}</h5>
       </div>
-    </a>
+    </div>
   );
 };
 

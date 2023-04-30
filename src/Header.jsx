@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 
 const Header = ({ setFilteredData, handleSearch, filteredData }) => {
   return (
@@ -9,16 +9,17 @@ const Header = ({ setFilteredData, handleSearch, filteredData }) => {
         <input type="text" onChange={(event) => handleSearch(event)} />
       </div>
 
-      <button
+      <div
         onClick={(e) => {
           setFilteredData(filteredData.slice(0).reverse());
           console.log(filteredData);
         }}
       >
         Change order
-      </button>
+      </div>
     </header>
   );
 };
 
 export default Header;
+ */
