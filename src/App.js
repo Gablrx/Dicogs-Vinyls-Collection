@@ -87,9 +87,10 @@ function App() {
               </fieldset>
             </div>
 
-            <div className="reordeBtn">
+            <div className="reorderBtn" >
               <button
                 onClick={(e) => {
+                  e.preventDefault()
                   setFilteredData(filteredData.slice(0).reverse());
                   console.log(filteredData);
                 }}
