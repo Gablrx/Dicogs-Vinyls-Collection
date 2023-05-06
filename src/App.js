@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
+
+import { Link, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import './App.css';
+
 import Gallery from "./Gallery";
+import { AlbumDetails } from "./AlbumDetails";
 import { Rings } from "react-loader-spinner";
 
 
-function App() {
+export function App() {
 
-  let url = 'https://api.discogs.com/users/Gabisback/collection/folders/0/releases?token=rrMYWfiqXCKLfmkcMuRJsNDhYWvJNhwcVbUsyGKe&per_page=100&sort=year';
+  let url = 'https://api.discogs.com/users/Gabisback/collection/folders/0/releases?token=rrMYWfiqXCKLfmkcMuRJsNDhYWvJNhwcVbUsyGKe&per_page=100&sort=year&language=fr-EU';
 
   const [allData, setAllData] = useState([]);
   const [filteredData, setFilteredData] = useState(allData);
@@ -78,7 +82,6 @@ function App() {
         <header>
           <h1>Vinyl Collection</h1>
 
-
           <form>
             <div>
               <fieldset>
@@ -98,23 +101,20 @@ function App() {
                 Sort
               </button>
             </div>
-
-
-
           </form>
 
 
         </header>
 
-        <div className="collectionGallery">
-          {
-            filteredData.map((value, index) => {
-              return (
-                <Gallery value={value} key={index} />
-              )
-            })
-          }
-        </div>
+
+        {/* <Gallery handleSearch={filteredData} /> */}
+
+        <Routes>
+
+          <Route path="/" element={<Gallery handleSearch={filteredData} />} />
+          <Route path="/album/:master_id" element={<AlbumDetails handleSearch={filteredData} />} />
+
+        </Routes>
       </div>
     )
   }

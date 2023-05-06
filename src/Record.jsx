@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 
 const Record = ({ value }) => {
   return (
@@ -18,3 +18,4 @@ const Record = ({ value }) => {
   );
 };
 export default Record;
+ */

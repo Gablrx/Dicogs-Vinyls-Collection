@@ -59,6 +59,9 @@ input {
   color: white;
   text-align: center;
 }
+input:focus {
+  outline: none;
+}
 .reorderBtn {
   margin: 10px;
 }
@@ -146,4 +149,14 @@ input {
   .collectionGallery .recordContainer {
     width: 28%;
   }
+}
+
+.albumDetails {
+  color: #fff;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-color: black;
+  text-align: center;
 }

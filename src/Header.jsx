@@ -1,25 +1,30 @@
 /* import React from "react";
 
-const Header = ({ setFilteredData, handleSearch, filteredData }) => {
+export const Header = ({ handleSearch }) => {
   return (
     <header>
       <h1>Vinyl Collection</h1>
-      <div>
-        <label>Search:</label>
-        <input type="text" onChange={(event) => handleSearch(event)} />
-      </div>
 
-      <div
-        onClick={(e) => {
-          setFilteredData(filteredData.slice(0).reverse());
-          console.log(filteredData);
-        }}
-      >
-        Change order
-      </div>
+      <form>
+        <div>
+          <fieldset>
+            <legend>Search</legend>
+            <input type="text" onChange={(event) => handleSearch(event)} />
+          </fieldset>
+        </div>
+
+        <div className="reorderBtn">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setFilteredData(filteredData.slice(0).reverse());
+              console.log(filteredData);
+            }}
+          >
+            Sort
+          </button>
+        </div>
+      </form>
     </header>
   );
-};
-
-export default Header;
- */
+}; */
