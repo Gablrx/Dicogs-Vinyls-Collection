@@ -11,22 +11,24 @@ import { Rings } from "react-loader-spinner";
 
 export function App() {
 
-  let url = 'https://api.discogs.com/users/Gabisback/collection/folders/0/releases?token=rrMYWfiqXCKLfmkcMuRJsNDhYWvJNhwcVbUsyGKe&per_page=100&sort=year&language=fr-EU';
 
-  const [allData, setAllData] = useState([]);
-  const [filteredData, setFilteredData] = useState(allData);
+
+  const [user, setUser] = useState('gabisback');
+  const [userCollection, setUserCollection] = useState([]);
+  const [filteredData, setFilteredData] = useState(userCollection);
 
   const [isLoaded, setIsLoaded] = useState(false);
 
+  let url = `https://api.discogs.com/users/${user}/collection/folders/0/releases?token=rrMYWfiqXCKLfmkcMuRJsNDhYWvJNhwcVbUsyGKe&per_page=100&sort=year&language=fr-EU`;
 
 
-  useEffect(() => {
+  const getCollection = () => {
     axios(url)
       .then(response => {
         console.log(response.data.releases);
 
 
-        setAllData(response.data.releases);
+        setUserCollection(response.data.releases);
         setFilteredData(response.data.releases);
 
         setTimeout(() => {
@@ -37,7 +39,24 @@ export function App() {
       .catch(error => {
         console.log('Error : ' + error);
       })
-  }, [url]);
+  }
+  useEffect(() => {
+    getCollection()
+  }, []);
+
+
+  const onChangeSetUserValue = (event) => {
+    const userName = event.target.value;
+    setUser(userName)
+  };
+  const onSubmitSelectUser = (e) => {
+    e.preventDefault()
+    setIsLoaded(false);
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 2500);
+    getCollection()
+  }
 
 
   const handleSearch = (event) => {
@@ -45,7 +64,7 @@ export function App() {
     let value = event.target.value.toLowerCase();
     let result = [];
 
-    result = allData.filter((data) => {
+    result = userCollection.filter((data) => {
       return data.basic_information.artists[0].name.toLowerCase().search(value.toLowerCase()) !== -1 ||
         data.basic_information.title.toLowerCase().search(value.toLowerCase()) !== -1;
     });
@@ -82,8 +101,12 @@ export function App() {
         <header>
           <h1>Vinyl Collection</h1>
 
+          <form onSubmit={onSubmitSelectUser}>
+            <input type="text" onChange={onChangeSetUserValue} />
+          </form>
           <form>
             <div>
+
               <fieldset>
                 <legend>Search</legend>
                 <input type="text" onChange={(event) => handleSearch(event)} />
@@ -93,7 +116,7 @@ export function App() {
             <div className="reorderBtn" >
               <button
                 onClick={(e) => {
-                  e.preventDefault()
+                  e.preventDefault();
                   setFilteredData(filteredData.slice(0).reverse());
                   console.log(filteredData);
                 }}
