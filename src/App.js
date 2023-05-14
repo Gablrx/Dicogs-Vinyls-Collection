@@ -8,6 +8,7 @@ import Gallery from "./Gallery";
 import { AlbumDetails } from "./AlbumDetails";
 import { Rings } from "react-loader-spinner";
 
+const discogs_token = process.env.REACT_APP_DISCOGS_TOKEN;
 
 export function App() {
 
@@ -19,7 +20,7 @@ export function App() {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  let url = `https://api.discogs.com/users/${user}/collection/folders/0/releases?token=rrMYWfiqXCKLfmkcMuRJsNDhYWvJNhwcVbUsyGKe&per_page=100&sort=year&language=fr-EU`;
+  let url = `https://api.discogs.com/users/${user}/collection/folders/0/releases?token=${discogs_token}&per_page=100&sort=year&language=fr-EU`;
 
 
   const getCollection = () => {
@@ -135,7 +136,7 @@ export function App() {
         <Routes>
 
           <Route path="/" element={<Gallery handleSearch={filteredData} />} />
-          <Route path="/album/:master_id" element={<AlbumDetails handleSearch={filteredData} />} />
+          <Route path="/:title/:master_id" element={<AlbumDetails handleSearch={filteredData} />} />
 
         </Routes>
       </div>
