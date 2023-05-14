@@ -52,7 +52,7 @@ export const AlbumDetails = () => {
           cursor: "pointer",
           color: "tomato",
           textAlign: "end",
-          marginRight: "40px",
+          margin: "15px 50px",
         }}
         onClick={goBack}
       >
@@ -60,11 +60,22 @@ export const AlbumDetails = () => {
         X
       </div>
 
-      <Spotify
+      {/*  <Spotify
         link={`https://open.spotify.com/album/${albumSpotifyID}?si=mTiITmlHQpaGkoivGTv8Jw`}
-      />
-
-      <ul style={{ listStyle: "none", padding: "0px" }}>
+      /> */}
+      <div style={{ maxWidth: "600px", margin: "auto" }}>
+        <iframe
+          style={{ borderRadius: 12 }}
+          src={`https://open.spotify.com/embed/album/${albumSpotifyID}?utm_source=generator`}
+          allowFullScreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          width="100%"
+          height={600}
+          frameBorder={0}
+        />
+      </div>
+      {/*  <ul style={{ listStyle: "none", padding: "0px" }}>
         {tracklist.map((track, index) => {
           return (
             <li key={index} style={{ margin: "20px" }}>
@@ -73,7 +84,7 @@ export const AlbumDetails = () => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 };
