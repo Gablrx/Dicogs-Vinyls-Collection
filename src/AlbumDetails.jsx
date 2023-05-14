@@ -9,7 +9,7 @@ export const AlbumDetails = () => {
   const { title, master_id } = useParams();
   const navigate = useNavigate();
   const goBack = () => {
-    navigate(-2);
+    navigate(-1);
   };
   console.log("album " + title);
 
