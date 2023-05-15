@@ -13,8 +13,10 @@ export const AlbumDetails = () => {
   };
   console.log("album " + title);
 
-  const [details, setDetails] = useState({});
+  const [details, setDetails] = useState("");
+  const [notes, setNotes] = useState("");
   const [tracklist, setTracklist] = useState([]);
+
   const [albumSpotifyID, setAlbumSpotifyID] = useState("");
 
   console.log(getAlbumId(title));
@@ -32,6 +34,7 @@ export const AlbumDetails = () => {
     Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
       ([{ data: albumDetails }]) => {
         setDetails(albumDetails);
+        setNotes(albumDetails.notes);
         setTracklist(albumDetails.tracklist);
         console.log(albumDetails.tracklist);
       }
@@ -43,6 +46,10 @@ export const AlbumDetails = () => {
   }, []);
   // console.log(index);
   // console.log(details);
+  /* let notes = "Bonjour (Michel 123516). Salut (Henry)."; */
+
+  let description = notes.replace(/\s*\[(.*?)\]/g, "");
+  console.log(description);
 
   return (
     <div className="albumDetails" style={{ overflow: "scroll" }}>
@@ -75,6 +82,9 @@ export const AlbumDetails = () => {
           frameBorder={0}
         />
       </div>
+
+      <p>{description}</p>
+
       {/*  <ul style={{ listStyle: "none", padding: "0px" }}>
         {tracklist.map((track, index) => {
           return (
