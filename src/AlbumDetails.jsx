@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 
 import { getAlbumId } from "./spotifyAPI";
-import { Spotify } from "react-spotify-embed";
+import { Oval } from "react-loader-spinner";
 import { AlbumDetailsHeader } from "./AlbumDetails_Header";
 
 export const AlbumDetails = () => {
@@ -16,7 +16,7 @@ export const AlbumDetails = () => {
 
   const [details, setDetails] = useState("");
   const [notes, setNotes] = useState("");
-  const [tracklist, setTracklist] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [albumSpotifyID, setAlbumSpotifyID] = useState("");
 
@@ -36,7 +36,9 @@ export const AlbumDetails = () => {
       ([{ data: albumDetails }]) => {
         setDetails(albumDetails);
         setNotes(albumDetails.notes);
-        setTracklist(albumDetails.tracklist);
+        setTimeout(() => {
+          setIsLoaded(true);
+        }, 1500);
         console.log(albumDetails.tracklist);
       }
     );
@@ -68,34 +70,38 @@ export const AlbumDetails = () => {
         </div>
       </Link> */}
       <AlbumDetailsHeader details={details} />
-      {/*  <Spotify
-        link={`https://open.spotify.com/album/${albumSpotifyID}?si=mTiITmlHQpaGkoivGTv8Jw`}
-      /> */}
-      <div style={{ maxWidth: "600px", margin: "auto" }}>
-        <iframe
-          style={{ borderRadius: 12 }}
-          src={`https://open.spotify.com/embed/album/${albumSpotifyID}?utm_source=generator`}
-          allowFullScreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          width="100%"
-          height={600}
-          frameBorder={0}
-        />
-      </div>
-
-      {/* <p>{description}</p> */}
-
-      {/*  <ul style={{ listStyle: "none", padding: "0px" }}>
-        {tracklist.map((track, index) => {
-          return (
-            <li key={index} style={{ margin: "20px" }}>
-              <span style={{ color: "grey" }}>{track.position} / </span>
-              {track.title}
-            </li>
-          );
-        })}
-      </ul> */}
+      {isLoaded ? (
+        <div style={{ maxWidth: "600px", margin: "auto" }}>
+          <iframe
+            title="spotifyIframe"
+            style={{ borderRadius: 12 }}
+            src={`https://open.spotify.com/embed/album/${albumSpotifyID}?utm_source=generator`}
+            allowFullScreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            width="100%"
+            height={600}
+            frameBorder={0}
+          />
+        </div>
+      ) : (
+        <div>
+          <div className="redSpinner">
+            <Oval
+              height={40}
+              width={40}
+              color="#b10303"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="tomato"
+              strokeWidth={1}
+              strokeWidthSecondary={2}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
