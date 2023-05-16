@@ -24,7 +24,7 @@ export const AlbumDetails = () => {
 
   useEffect(() => {
     // Convert promise to array :
-    getAlbumId(artist + " " + title).then((albumId) => {
+    getAlbumId(title + " " + artist).then((albumId) => {
       setAlbumSpotifyID(albumId);
     });
   }, []);
