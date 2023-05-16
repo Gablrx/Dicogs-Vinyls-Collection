@@ -10,7 +10,9 @@ export const AlbumDetailsHeader = ({ details }) => {
 
         <div className="Header">
             <div className="logo">
-                <img src={logo} />
+                <Link to={`/`}>
+                    <img src={logo} alt="" />
+                </Link>
             </div>
             <div>
                 <h1>{details.title}</h1>

@@ -178,7 +178,8 @@ input:focus {
   justify-content: space-between;
 }
 .logo img {
-  width: 45px;
+  width: 35px;
+  padding-right: 5px;
   filter: grayscale(30%);
 }
 
