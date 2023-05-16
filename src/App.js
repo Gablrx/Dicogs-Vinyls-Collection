@@ -104,7 +104,9 @@ export function App() {
 
         <div className="Header">
           <div className="logo">
-            <img src={logo} />
+            <Link to={'/'}>
+              <img src={logo} />
+            </Link>
           </div>
           <div>
             <h1>Vinyl Collection</h1>
