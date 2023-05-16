@@ -177,12 +177,9 @@ input:focus {
   display: flex;
   justify-content: space-between;
 }
-.logo {
-  width: 3.5%;
-  filter: grayscale(30%);
-}
 .logo img {
-  width: 100%;
+  width: 45px;
+  filter: grayscale(30%);
 }
 
 .closeBtn {
