@@ -13,7 +13,7 @@ const Gallery = ({ handleSearch }) => {
               }}
             ></div>
             <Link
-              to={`/${value.basic_information.title}/${value.basic_information.master_id}`}
+              to={`/${value.basic_information.artists[0].name}/${value.basic_information.title}/${value.basic_information.master_id}`}
             >
               <div className="recordOverlay">
                 <h3>{value.basic_information.artists[0].name}</h3>

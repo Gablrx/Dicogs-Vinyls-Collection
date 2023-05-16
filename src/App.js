@@ -136,7 +136,7 @@ export function App() {
         <Routes>
 
           <Route path="/" element={<Gallery handleSearch={filteredData} />} />
-          <Route path="/:title/:master_id" element={<AlbumDetails handleSearch={filteredData} />} />
+          <Route path="/:artist/:title/:master_id" element={<AlbumDetails handleSearch={filteredData} />} />
 
         </Routes>
       </div>

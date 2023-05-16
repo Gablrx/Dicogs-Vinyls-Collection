@@ -160,3 +160,14 @@ input:focus {
   background-color: black;
   text-align: center;
 }
+
+.albumDetailsHeader {
+  position: relative;
+}
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 40px;
+  padding: 0;
+}

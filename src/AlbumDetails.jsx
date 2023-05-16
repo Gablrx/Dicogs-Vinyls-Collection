@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 import { getAlbumId } from "./spotifyAPI";
 import { Spotify } from "react-spotify-embed";
+import { AlbumDetailsHeader } from "./AlbumDetails_Header";
 
 export const AlbumDetails = () => {
-  const { title, master_id } = useParams();
+  const { artist, title, master_id } = useParams();
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
@@ -19,15 +20,15 @@ export const AlbumDetails = () => {
 
   const [albumSpotifyID, setAlbumSpotifyID] = useState("");
 
-  console.log(getAlbumId(title));
+  /* console.log(getAlbumId(title)); */
 
   useEffect(() => {
     // Convert promise to array :
-    getAlbumId(title).then((albumId) => {
+    getAlbumId(artist + " " + title).then((albumId) => {
       setAlbumSpotifyID(albumId);
     });
   }, []);
-  console.log("id " + albumSpotifyID);
+  /*   console.log("id " + albumSpotifyID); */
   const getAlbumDetails = async () => {
     let endpoints = [`https://api.discogs.com/masters/${master_id}`];
 
@@ -45,28 +46,28 @@ export const AlbumDetails = () => {
     getAlbumDetails();
   }, []);
   // console.log(index);
-  // console.log(details);
-  /* let notes = "Bonjour (Michel 123516). Salut (Henry)."; */
+  console.log(details);
 
-  let description = notes.replace(/\s*\[(.*?)\]/g, "");
-  console.log(description);
+  /* let description = notes.replace(/\s*\[(.*?)\]/g, "");
+  console.log(description); */
 
   return (
     <div className="albumDetails" style={{ overflow: "scroll" }}>
-      <h1>{details.title}</h1>
-      <div
-        style={{
-          cursor: "pointer",
-          color: "tomato",
-          textAlign: "end",
-          margin: "15px 50px",
-        }}
-        onClick={goBack}
-      >
-        {" "}
-        X
-      </div>
-
+      {/* <h1>{details.title}</h1>
+      <Link to={`/`}>
+        <div
+          style={{
+            cursor: "pointer",
+            color: "tomato",
+            textAlign: "end",
+            margin: "15px 50px",
+          }}
+        >
+          {" "}
+          X
+        </div>
+      </Link> */}
+      <AlbumDetailsHeader details={details} />
       {/*  <Spotify
         link={`https://open.spotify.com/album/${albumSpotifyID}?si=mTiITmlHQpaGkoivGTv8Jw`}
       /> */}
@@ -83,7 +84,7 @@ export const AlbumDetails = () => {
         />
       </div>
 
-      <p>{description}</p>
+      {/* <p>{description}</p> */}
 
       {/*  <ul style={{ listStyle: "none", padding: "0px" }}>
         {tracklist.map((track, index) => {
