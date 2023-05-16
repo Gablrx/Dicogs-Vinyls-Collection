@@ -183,5 +183,7 @@ input:focus {
 }
 
 .closeBtn {
-  width: 2%;
+  width: 45px;
+  padding-top: 10px;
+  padding-right: 5px;
 }
